@@ -10,6 +10,24 @@
     <div class="row">
       <a class="btn" href="/tenant">Aller page tenant</a>
     </div>
+
+  </section>
+
+    <section class="card">
+    <h1>{{ tenant?.config.brand.name }}</h1>
+
+    <a v-if="cta" class="btn" :href="cta.href">
+      {{ cta.label }}
+    </a>
+
+    <p v-else class="muted">Pas de CTA pour ce tenant.</p>
+  </section>
+
+  <section>
+    <p v-if="prout" class=""btn>
+      {{prout}}
+    </p>
+    <p v-else>pas proute</p>
   </section>
 </template>
 
@@ -18,6 +36,8 @@ const tenant = useTenant();
 
 const tenantId = computed(() => tenant.value?.tenantId ?? "unknown");
 const brandName = computed(() => tenant.value?.config?.brand?.name ?? "Unknown");
+const cta = computed(() => tenant.value?.config?.cta ?? null);
+const prout = computed(() => tenant.value?.config?.prout ?? null);
 </script>
 
 <style scoped>

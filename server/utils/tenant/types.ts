@@ -5,7 +5,12 @@ export type TenantConfig = {
     brand: { name: string; logoText?: string };
     defaultLayout?: "default" | "landing";
     features?: Record<string, boolean>;
+    cta?: {
+        label: string;
+        href: string;
+    };
 };
+
 
 export type TenantTheme = {
     cssVars: Record<string, string>;

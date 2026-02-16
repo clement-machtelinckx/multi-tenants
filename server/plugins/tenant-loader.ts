@@ -1,5 +1,7 @@
 import { defineNitroPlugin } from "nitropack/runtime";
-import { getHeader } from "h3";
+import { getHeader, getCookie } from "h3";
+
+
 import { resolve } from "node:path";
 import type { TenantRuntime } from "../utils/tenant/types";
 import { loadTenantIndex, loadTenantRuntime } from "../utils/tenant/loadTenant";
@@ -25,7 +27,7 @@ export default defineNitroPlugin((nitroApp) => {
         const root = tenantsRootAbs();
 
         const host = getHeader(event, "host");
-        const headerTenant = getHeader(event, "x-tenant");
+        const headerTenant = getHeader(event, "x-tenant") || getCookie(event, "x-tenant");
 
         const index = await loadTenantIndex(root);
         const tenantId = resolveTenantId({ host, headerTenant, index });

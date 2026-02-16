@@ -7,5 +7,10 @@
     "defaultLayout": "default",
     "features": {
         "blog": false
-    }
+    },
+    "cta": {
+        "label": "CTA TB",
+        "href": "/devis"
+    },
+    "prout": "prout"
 }

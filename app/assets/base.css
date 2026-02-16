@@ -1,18 +1,19 @@
 :root {
-    /* fallback si pas de tenant */
+    /* fallback si tenant pas chargé */
     --c-bg: #ffffff;
     --c-surface: #f7f7f7;
     --c-text: #111111;
     --c-primary: #2563eb;
     --c-on-primary: #ffffff;
-
     --radius: 14px;
 }
 
 html,
 body {
+    margin: 0;
     background: var(--c-bg);
     color: var(--c-text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 * {

@@ -5,18 +5,24 @@
 <script setup lang="ts">
 const tenant = useTenant();
 
-const cssText = computed(() => {
-  const vars = tenant.value?.theme?.cssVars ?? {};
-  const lines = Object.entries(vars).map(([k, v]) => `--${k}: ${v};`);
-  return `:root {\n${lines.join("\n")}\n}`;
-});
+const vars = computed(() => tenant.value?.theme?.cssVars ?? {});
+const tenantId = computed(() => tenant.value?.tenantId ?? "unknown");
 
+function applyInlineVars(v: Record<string, string>) {
+  if (!import.meta.client) return;
+  const el = document.documentElement; // <html>
+  el.setAttribute("data-tenant", tenantId.value);
+
+  for (const [k, val] of Object.entries(v)) {
+    el.style.setProperty(`--${k}`, val);
+  }
+}
+
+onMounted(() => applyInlineVars(vars.value));
+watch(vars, (v) => applyInlineVars(v), { deep: true });
+
+// Bonus SSR: on met quand même l’attribut côté SSR (pratique debug + futur)
 useHead(() => ({
-  style: [
-    {
-      key: "tenant-theme",
-      children: cssText.value
-    }
-  ]
+  htmlAttrs: { "data-tenant": tenantId.value }
 }));
 </script>
