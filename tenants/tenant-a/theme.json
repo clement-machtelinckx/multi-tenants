@@ -1,0 +1,10 @@
+{
+    "cssVars": {
+        "c-bg": "#0b1020",
+        "c-surface": "#111a33",
+        "c-text": "#e7ecff",
+        "c-primary": "#7c5cff",
+        "c-on-primary": "#0b1020",
+        "radius": "14px"
+    }
+}

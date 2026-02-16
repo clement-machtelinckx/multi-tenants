@@ -1,0 +1,8 @@
+{
+    "defaultTenantId": "tenant-a",
+    "domains": {
+        "tenant-a.local": "tenant-a",
+        "tenant-b.local": "tenant-b",
+        "tenant-c.local": "tenant-c"
+    }
+}

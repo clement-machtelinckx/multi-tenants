@@ -1,18 +1,41 @@
 <template>
   <section class="card">
-    <h1>Home</h1>
-    <p>Page neutre (pas encore multi-tenant).</p>
-    <p class="muted">Étape suivante : on détecte le tenant et on switch thème/layout.</p>
+    <h1>{{ brandName }}</h1>
+    <p class="muted">tenantId: <b>{{ tenantId }}</b></p>
+
+    <p class="muted">
+      Le thème vient de <code>tenants/&lt;tenantId&gt;/theme.json</code> (runtime).
+    </p>
+
+    <div class="row">
+      <a class="btn" href="/tenant">Aller page tenant</a>
+    </div>
   </section>
 </template>
 
+<script setup lang="ts">
+const tenant = useTenant();
+
+const tenantId = computed(() => tenant.value?.tenantId ?? "unknown");
+const brandName = computed(() => tenant.value?.config?.brand?.name ?? "Unknown");
+</script>
+
 <style scoped>
 .card {
-  border: 1px solid #e8e8e8;
-  border-radius: 14px;
+  background: var(--c-surface);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--c-text) 10%, transparent);
   padding: 18px;
 }
-.muted {
-  opacity: 0.7;
+.row { margin-top: 12px; }
+.btn {
+  display: inline-block;
+  background: var(--c-primary);
+  color: var(--c-on-primary);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-weight: 700;
 }
+.muted { opacity: 0.75; }
 </style>

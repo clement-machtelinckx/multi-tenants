@@ -1,5 +1,5 @@
 <template>
-  <section class="card" :class="tenantClass">
+  <section class="card">
     <h1>Accueil tenant</h1>
 
     <p>
@@ -16,26 +16,18 @@
       Tenant courant: <b>{{ tenantLabel }}</b>
     </p>
 
-    <div v-if="tenant === 'a'" class="box">
-      <h3>Composant / style spécifique A</h3>
-      <p>Fond violet, CTA différent.</p>
-    </div>
-
-    <div v-else class="box">
-      <h3>Composant / style spécifique B</h3>
-      <p>Fond vert, contenu différent.</p>
+    <div class="box">
+      <h3>Composant commun</h3>
+      <p>
+        Le style change via <b>CSS variables</b> (thème), pas via des classes tenant.
+      </p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 const route = useRoute();
-
-const tenant = computed(() => (route.query.t === "b" ? "b" : "a"));
-
-const tenantLabel = computed(() => (tenant.value === "a" ? "tenant-a" : "tenant-b"));
-
-const tenantClass = computed(() => (tenant.value === "a" ? "tenant-a" : "tenant-b"));
+const tenantLabel = computed(() => (route.query.t === "b" ? "tenant-b" : "tenant-a"));
 </script>
 
 <style scoped>
@@ -45,6 +37,13 @@ const tenantClass = computed(() => (tenant.value === "a" ? "tenant-a" : "tenant-
   border-radius: var(--radius);
   border: 1px solid color-mix(in oklab, var(--c-text) 10%, transparent);
   padding: 18px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 12px 0;
 }
 
 .btn {
@@ -57,4 +56,12 @@ const tenantClass = computed(() => (tenant.value === "a" ? "tenant-a" : "tenant-
   border: 1px solid transparent;
 }
 
+.box {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--c-text) 10%, transparent);
+}
+
+.muted { opacity: 0.75; }
 </style>

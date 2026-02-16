@@ -1,0 +1,11 @@
+{
+    "tenantId": "tenant-b",
+    "brand": {
+        "name": "Tenant B",
+        "logoText": "B"
+    },
+    "defaultLayout": "default",
+    "features": {
+        "blog": false
+    }
+}
