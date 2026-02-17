@@ -23,12 +23,6 @@
     <p v-else class="muted">Pas de CTA pour ce tenant.</p>
   </section>
 
-  <section>
-    <p v-if="prout" class=""btn>
-      {{prout}}
-    </p>
-    <p v-else>pas proute</p>
-  </section>
 </template>
 
 <script setup lang="ts">

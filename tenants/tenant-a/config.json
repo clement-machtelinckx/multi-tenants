@@ -6,10 +6,23 @@
     },
     "defaultLayout": "landing",
     "features": {
-        "blog": true
+        "blog": true,
+        "randomCard": true
     },
     "cta": {
         "label": "Coucou CTA",
         "href": "/contact"
+    },
+    "contact": {
+        "email": "clement@test.com",
+        "phone": "0606060606",
+        "address": "123 rue de la paix, Paris",
+        "addressCp": "75000",
+        "addressCity": "Paris",
+        "addressCountry": "France",
+        "social": {
+            "twitter": "https://twitter.com/tenant-a",
+            "facebook": "https://facebook.com/tenant-a"
+        }
     }
 }

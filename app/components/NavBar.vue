@@ -1,7 +1,10 @@
 <template>
   <header class="nav">
     <NuxtLink to="/">Home</NuxtLink>
-    <NuxtLink to="/tenant">Accueil tenant</NuxtLink>
+    <NuxtLink to="/tenant">Tenant</NuxtLink>
+    <NuxtLink to="/contact">Contact</NuxtLink>
+    <NuxtLink to="/about">A propos</NuxtLink>
+    <NuxtLink to="/reseaux">Réseaux</NuxtLink>
   </header>
 </template>
 
